@@ -1,0 +1,216 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/scenes/BattleScene.gd" type="Script" id=1]
+[ext_resource path="res://scenes/entities/ToyCombatant.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/fonts/game_font.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://scenes/ui/HealthBar.tscn" type="PackedScene" id=6]
+
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+outline_size = 2
+outline_color = Color( 0.0823529, 0.286275, 0.635294, 1 )
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+outline_size = 2
+outline_color = Color( 0.172549, 0.717647, 0.266667, 1 )
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+outline_size = 2
+outline_color = Color( 0.717647, 0.172549, 0.411765, 1 )
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 5 )
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="Combatants" type="Node2D" parent="."]
+
+[node name="Player" parent="Combatants" instance=ExtResource( 2 )]
+position = Vector2( -128, 128 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Tween" type="Tween" parent="Combatants/Player"]
+
+[node name="Enemy" parent="Combatants" instance=ExtResource( 2 )]
+position = Vector2( 640, 128 )
+scale = Vector2( -0.4, 0.4 )
+is_player = false
+
+[node name="Tween" type="Tween" parent="Combatants/Enemy"]
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+margin_right = 500.0
+margin_bottom = 275.0
+rect_min_size = Vector2( 500, 275 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerHealthBar" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" parent="UI/PlayerHealthBar" instance=ExtResource( 6 )]
+margin_left = -14.88
+margin_top = -18.8364
+margin_right = 178.12
+margin_bottom = 45.1636
+
+[node name="Value" type="Label" parent="UI/PlayerHealthBar"]
+margin_left = 96.0
+margin_top = 8.0
+margin_right = 176.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.172549, 0.717647, 0.266667, 1 )
+text = "100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="HBoxContainer" parent="UI/PlayerHealthBar"]
+margin_left = 8.0
+margin_top = 40.0
+margin_right = 216.0
+margin_bottom = 80.0
+
+[node name="EnemyHealthBar" type="Control" parent="UI"]
+margin_left = 496.0
+margin_right = 536.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" parent="UI/EnemyHealthBar" instance=ExtResource( 6 )]
+modulate = Color( 0.717647, 0.172549, 0.411765, 1 )
+anchor_left = -10.852
+anchor_top = 0.3
+anchor_right = -10.852
+anchor_bottom = 0.3
+margin_left = 434.08
+margin_top = -12.0
+margin_right = 627.08
+margin_bottom = 52.0
+rect_scale = Vector2( -0.7, 0.4 )
+is_enemy = true
+
+[node name="Value" type="Label" parent="UI/EnemyHealthBar"]
+margin_left = -176.0
+margin_top = 8.0
+margin_right = -104.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.717647, 0.172549, 0.411765, 1 )
+text = "100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="HBoxContainer" parent="UI/EnemyHealthBar"]
+margin_left = -200.0
+margin_top = 40.0
+margin_bottom = 80.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BattleMessage" type="Label" parent="UI"]
+margin_top = -64.0
+margin_right = 500.0
+margin_bottom = -34.0
+rect_pivot_offset = Vector2( 250, 15 )
+custom_fonts/font = SubResource( 3 )
+text = "TOY BATTLE BEGINNING!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BattleMessageTween" type="Tween" parent="UI/BattleMessage"]
+
+[node name="PlayerName" type="Label" parent="UI"]
+margin_left = 8.0
+margin_top = 304.0
+margin_right = 240.0
+margin_bottom = 331.0
+custom_fonts/font = SubResource( 4 )
+text = "SCARYDINO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyName" type="Label" parent="UI"]
+margin_left = 248.0
+margin_top = 304.0
+margin_right = 496.0
+margin_bottom = 331.0
+custom_fonts/font = SubResource( 5 )
+text = "COMBAT FUNGUS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Actions" type="VBoxContainer" parent="UI"]
+margin_left = 184.0
+margin_top = -136.0
+margin_right = 304.0
+margin_bottom = -32.0
+alignment = 1
+
+[node name="ActionsTween" type="Tween" parent="UI"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 524288
+collision_mask = 524288
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -40, -56, -40, 320, 544, 320, 544, 0, 500, 0, 500, 272, 0, 272, 0, 0, 544, 0, 536, -40 )
+
+[connection signal="value_changed" from="UI/PlayerHealthBar/HealthBar" to="." method="_on_PlayerHealthBar_value_changed"]
+[connection signal="value_changed" from="UI/EnemyHealthBar/HealthBar" to="." method="_on_EnemyHealthBar_value_changed"]
+[connection signal="tween_all_completed" from="UI/BattleMessage/BattleMessageTween" to="." method="_on_BattleMessageTween_tween_all_completed"]

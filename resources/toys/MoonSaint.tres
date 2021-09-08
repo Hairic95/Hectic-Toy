@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://scripts/resources/ToyStats.gd" type="Script" id=1]
+[ext_resource path="res://resources/actions/MindBoom.tres" type="Resource" id=2]
+[ext_resource path="res://resources/actions/AnnoyingPrayer.tres" type="Resource" id=3]
+[ext_resource path="res://resources/actions/HeadShot.tres" type="Resource" id=4]
+[ext_resource path="res://assets/textures/player/moonsiant.png" type="Texture" id=5]
+
+[resource]
+script = ExtResource( 1 )
+toy_name = "MoonSaint"
+toy_sprite = ExtResource( 5 )
+max_hit_points = 80
+hit_points = 80
+physical_defense = 2
+ranged_defense = 2
+special_defense = 5
+speed = 5
+actions = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ]

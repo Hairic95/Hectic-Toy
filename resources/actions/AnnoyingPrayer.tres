@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://scripts/resources/Action.gd" type="Script" id=1]
+[ext_resource path="res://resources/effects/Heal20.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+action_name = "Annoying Prayer"
+description = "A lengthy praise for the Lord or who for them. Heals the user."
+action_type = "special"
+power = 6
+max_uses = 3
+current_uses = 3
+effects = [  ]
+self_effects = [ ExtResource( 2 ) ]

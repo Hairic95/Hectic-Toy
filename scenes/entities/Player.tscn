@@ -1,0 +1,157 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scripts/entities/Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/overworld/ow_player.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=16]
+resource_name = "Idle_Down"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Idle_Up"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Run_Down"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 2, 0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Run_Up"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 3, 5, 3 ]
+}
+
+[sub_resource type="AnimationNodeBlend2" id=15]
+
+[sub_resource type="AnimationNodeBlend2" id=13]
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Idle_Down"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Idle_Up"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Run_Down"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Run_Up"
+
+[sub_resource type="AnimationNodeBlend2" id=5]
+
+[sub_resource type="AnimationNodeBlendTree" id=8]
+graph_offset = Vector2( -226, -18.5 )
+nodes/Direction/node = SubResource( 15 )
+nodes/Direction/position = Vector2( 651, 121.5 )
+nodes/Down_State/node = SubResource( 13 )
+nodes/Down_State/position = Vector2( 260, -20 )
+nodes/Idle_Down/node = SubResource( 11 )
+nodes/Idle_Down/position = Vector2( 0, 0 )
+nodes/Idle_Up/node = SubResource( 6 )
+nodes/Idle_Up/position = Vector2( 140, 320 )
+nodes/Run_Down/node = SubResource( 14 )
+nodes/Run_Down/position = Vector2( 0, 160 )
+nodes/Run_Up/node = SubResource( 7 )
+nodes/Run_Up/position = Vector2( 160, 500 )
+nodes/Up_State/node = SubResource( 5 )
+nodes/Up_State/position = Vector2( 440, 280 )
+nodes/output/position = Vector2( 920, 200 )
+node_connections = [ "output", 0, "Direction", "Down_State", 0, "Idle_Down", "Down_State", 1, "Run_Down", "Up_State", 0, "Idle_Up", "Up_State", 1, "Run_Up", "Direction", 0, "Down_State", "Direction", 1, "Up_State" ]
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 4, 4 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4, 8 )
+
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="PlayerSprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 3 )
+hframes = 6
+frame = 5
+
+[node name="Anim" type="AnimationPlayer" parent="PlayerSprite"]
+anims/Idle_Down = SubResource( 16 )
+anims/Idle_Up = SubResource( 9 )
+anims/Run_Down = SubResource( 4 )
+anims/Run_Up = SubResource( 10 )
+
+[node name="AnimTree" type="AnimationTree" parent="PlayerSprite"]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../Anim")
+parameters/Direction/blend_amount = 0
+parameters/Down_State/blend_amount = 0
+parameters/Up_State/blend_amount = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -4 )
+shape = SubResource( 17 )
+
+[node name="Pushbox" type="Area2D" parent="." groups=[
+"Pushbox",
+]]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pushbox"]
+position = Vector2( 0, -8 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[connection signal="area_entered" from="Pushbox" to="." method="_on_Pushbox_area_entered"]
+[connection signal="area_exited" from="Pushbox" to="." method="_on_Pushbox_area_exited"]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://scripts/resources/Action.gd" type="Script" id=1]
+[ext_resource path="res://resources/effects/Recoil10.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+action_name = "Flame Burst"
+description = "A iron melting ray of fire. The user is dealt 10 damage."
+action_type = "special"
+power = 12
+max_uses = 4
+current_uses = 4
+effects = [  ]
+self_effects = [ ExtResource( 2 ) ]

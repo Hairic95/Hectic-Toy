@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://scripts/resources/ToyStats.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/player/wingedshadow.png" type="Texture" id=2]
+[ext_resource path="res://resources/actions/MindBoom.tres" type="Resource" id=3]
+[ext_resource path="res://resources/actions/Infection.tres" type="Resource" id=4]
+[ext_resource path="res://resources/actions/HeavyWounds.tres" type="Resource" id=5]
+
+[resource]
+script = ExtResource( 1 )
+toy_name = "WingedShadow"
+toy_sprite = ExtResource( 2 )
+max_hit_points = 85
+hit_points = 85
+physical_defense = 1
+ranged_defense = 4
+special_defense = 3
+speed = 9
+actions = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ]

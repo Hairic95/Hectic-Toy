@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/hover.mp3-4145763e4d2b296aa881a4ec1727d8dd.mp3str"
+
+[deps]
+
+source_file="res://assets/sound_effects/hover.mp3"
+dest_files=[ "res://.import/hover.mp3-4145763e4d2b296aa881a4ec1727d8dd.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

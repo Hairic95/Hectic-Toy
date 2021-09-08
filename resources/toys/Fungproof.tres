@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://scripts/resources/ToyStats.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/player/combatfungus.png" type="Texture" id=2]
+[ext_resource path="res://resources/actions/MoldShoot.tres" type="Resource" id=3]
+[ext_resource path="res://resources/actions/HealingSpore.tres" type="Resource" id=4]
+[ext_resource path="res://resources/actions/Flashspore.tres" type="Resource" id=5]
+
+[resource]
+script = ExtResource( 1 )
+toy_name = "Fungproof"
+toy_sprite = ExtResource( 2 )
+max_hit_points = 120
+hit_points = 120
+physical_defense = 4
+ranged_defense = 4
+special_defense = 1
+speed = 3
+actions = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]

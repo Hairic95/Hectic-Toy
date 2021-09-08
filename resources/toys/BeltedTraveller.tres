@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://assets/textures/player/beltedtraveller.png" type="Texture" id=1]
+[ext_resource path="res://scripts/resources/ToyStats.gd" type="Script" id=2]
+[ext_resource path="res://resources/actions/DeepBreath.tres" type="Resource" id=3]
+[ext_resource path="res://resources/actions/FierceBite.tres" type="Resource" id=4]
+[ext_resource path="res://resources/actions/PowerfulBoom.tres" type="Resource" id=5]
+
+[resource]
+script = ExtResource( 2 )
+toy_name = "BeltedTraveller"
+toy_sprite = ExtResource( 1 )
+max_hit_points = 90
+hit_points = 90
+physical_defense = 2
+ranged_defense = 2
+special_defense = 4
+speed = 8
+actions = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ]

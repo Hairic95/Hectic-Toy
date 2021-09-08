@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://scripts/resources/ToyStats.gd" type="Script" id=1]
+[ext_resource path="res://resources/actions/BraggingPunch.tres" type="Resource" id=2]
+[ext_resource path="res://resources/actions/PowerfulBoom.tres" type="Resource" id=3]
+[ext_resource path="res://resources/actions/Throw.tres" type="Resource" id=4]
+[ext_resource path="res://assets/textures/player/maskedgolem.png" type="Texture" id=5]
+
+[resource]
+script = ExtResource( 1 )
+toy_name = "MaskedGolem"
+toy_sprite = ExtResource( 5 )
+max_hit_points = 100
+hit_points = 100
+physical_defense = 5
+ranged_defense = 0
+special_defense = 5
+speed = 2
+actions = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ]

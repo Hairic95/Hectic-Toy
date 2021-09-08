@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://scripts/resources/Action.gd" type="Script" id=1]
+[ext_resource path="res://resources/effects/Wounded3.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+action_name = "Heavy Wounds"
+description = "A wicked blow right where it hurts. The target is Wounded and Stunned."
+action_type = "physical"
+power = 4
+max_uses = 3
+current_uses = 3
+effects = [ ExtResource( 2 ) ]
+self_effects = [  ]

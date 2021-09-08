@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://scripts/resources/ToyStats.gd" type="Script" id=1]
+[ext_resource path="res://resources/actions/HeadShot.tres" type="Resource" id=2]
+[ext_resource path="res://resources/actions/Infection.tres" type="Resource" id=3]
+[ext_resource path="res://resources/actions/PowerfulBoom.tres" type="Resource" id=4]
+[ext_resource path="res://assets/textures/player/astroshot.png" type="Texture" id=5]
+
+[resource]
+script = ExtResource( 1 )
+toy_name = "AstroShot"
+toy_sprite = ExtResource( 5 )
+max_hit_points = 90
+hit_points = 90
+physical_defense = 3
+ranged_defense = 4
+special_defense = 2
+speed = 6
+actions = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]

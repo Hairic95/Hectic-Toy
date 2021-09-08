@@ -1,0 +1,153 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://assets/music/MalreDeszik_WelkomenToZooClean.mp3" type="AudioStream" id=3]
+[ext_resource path="res://assets/music/MalreDeszik_Blowdy_Life.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound_effects/wind.mp3" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound_effects/hover.mp3" type="AudioStream" id=6]
+[ext_resource path="res://assets/fonts/FontResource.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/fonts/game_font.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Screen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Screen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="CurrentScene" type="Node" parent="."]
+
+[node name="CurrentBattle" type="Node" parent="."]
+
+[node name="Intro" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Intro"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Intro/Control"]
+margin_right = 500.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 2 )
+text = "Hectic Toy"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="Intro/Control"]
+margin_left = 0.0396729
+margin_top = 50.208
+margin_right = 500.04
+margin_bottom = 98.208
+text = "Move around with WASD"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="Intro/Control"]
+margin_left = 1.37451
+margin_top = 100.932
+margin_right = 501.375
+margin_bottom = 148.932
+text = "Go near other toy collector and click on them"
+align = 1
+valign = 1
+
+[node name="Label4" type="Label" parent="Intro/Control"]
+margin_left = -0.667419
+margin_top = 156.844
+margin_right = 499.333
+margin_bottom = 204.844
+text = "Collect all 10 toys to win!
+(even tho there is no victory screen)"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="Intro/Control"]
+margin_left = 190.69
+margin_top = 216.667
+margin_right = 321.69
+margin_bottom = 249.667
+text = "START"
+
+[node name="Transition" type="CanvasLayer" parent="."]
+
+[node name="Screen" type="ColorRect" parent="Transition"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="Transition"]
+anims/fade = SubResource( 3 )
+anims/show = SubResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ChangeThisNodeWith shader overlaytscn" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+
+[node name="BGMusicBattle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -8.0
+
+[node name="Wind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 6.0
+
+[node name="WindTimer" type="Timer" parent="Wind"]
+wait_time = 5.0
+autostart = true
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 3.0
+
+[connection signal="pressed" from="Intro/Control/Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="Wind/WindTimer" to="." method="_on_WindTimer_timeout"]

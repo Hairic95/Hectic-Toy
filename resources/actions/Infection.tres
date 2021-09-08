@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://scripts/resources/Action.gd" type="Script" id=1]
+[ext_resource path="res://resources/effects/Poison5.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+action_name = "Infection"
+description = "A cloud of toxic wastes that Poison the target and the user. Don't breath it!"
+action_type = "special"
+power = 3
+max_uses = 4
+current_uses = 4
+effects = [ ExtResource( 2 ) ]
+self_effects = [ ExtResource( 2 ) ]

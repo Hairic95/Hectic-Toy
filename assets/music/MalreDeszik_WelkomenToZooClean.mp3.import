@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/MalreDeszik_WelkomenToZooClean.mp3-05573e331ecb0e35bcdf0f37047bd124.mp3str"
+
+[deps]
+
+source_file="res://assets/music/MalreDeszik_WelkomenToZooClean.mp3"
+dest_files=[ "res://.import/MalreDeszik_WelkomenToZooClean.mp3-05573e331ecb0e35bcdf0f37047bd124.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
