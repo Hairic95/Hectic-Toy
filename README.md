@@ -17,6 +17,8 @@ Blowdy Life and WelkomenToZooClean by Malre Deszik (http://beta.ccmixter.org/peo
 
 Some sound effects over Freesound (CC-BY non commercial)
 
+The rest of the code is MIT
+
 Screenshots:
 ![alt text](https://img.itch.zone/aW1hZ2UvMTE4ODM1My82OTMwMTA4LnBuZw==/original/FAJEHm.png)
 ![alt text](https://img.itch.zone/aW1hZ2UvMTE4ODM1My82OTMwMTAzLnBuZw==/original/kUxcda.png)
