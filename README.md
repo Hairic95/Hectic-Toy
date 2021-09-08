@@ -12,7 +12,9 @@ Scribbles! font by Andrew-David (https://andrewdavidj.itch.io/scribbles) Buy the
 Other assets used:
 
 Lots of photos over Pexels and Wikimedia Commons
+
 Blowdy Life and WelkomenToZooClean by Malre Deszik (http://beta.ccmixter.org/people/MalreDeszik) (CC-BY Non commercial)
+
 Some sound effects over Freesound (CC-BY non commercial)
 
 Screenshots:
